@@ -1,0 +1,6 @@
+{
+  "name": "AI Persona Prompt Studio",
+  "description": "Generate detailed prompts to recreate your face in AI image generators based on a reference style.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

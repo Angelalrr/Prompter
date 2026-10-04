@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Post": {
+      "title": "Post",
+      "description": "A generated prompt post",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Optional user ID" },
+        "imageUrl": { "type": "string", "description": "Base64 or URL of the image" },
+        "combinedPrompt": { "type": "string", "description": "The continuous prompt text" },
+        "jsonPrompt": { "type": "string", "description": "The detailed breakdown of the prompt" },
+        "createdAt": { "type": "number", "description": "Unix timestamp" }
+      },
+      "required": ["imageUrl", "combinedPrompt", "jsonPrompt", "createdAt"]
+    },
+    "SavedPrompt": {
+      "title": "SavedPrompt",
+      "description": "A saved prompt with conversation history and details",
+      "type": "object",
+      "properties": {
+        "imageUrl": { "type": "string", "description": "Base64 or URL of the image" },
+        "combinedPrompt": { "type": "string", "description": "The continuous prompt text" },
+        "jsonPrompt": { "type": "string", "description": "The detailed breakdown of the prompt" },
+        "spanishDescription": { "type": "string", "description": "Description of the scene" },
+        "category": { "type": "string", "description": "Category tag" },
+        "chatMessages": { "type": "string", "description": "Serialized JSON of conversation messages" },
+        "createdAt": { "type": "number", "description": "Unix timestamp" }
+      },
+      "required": ["imageUrl", "combinedPrompt", "jsonPrompt", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/Post" },
+      "description": "Feed of generated prompts"
+    },
+    "/saved_prompts/{savedId}": {
+      "schema": { "$ref": "#/entities/SavedPrompt" },
+      "description": "Saved prompt sessions with chat history"
+    }
+  }
+}

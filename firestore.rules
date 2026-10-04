@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posts/{postId} {
+      // Anyone can read posts
+      allow read: if true;
+      // Anyone can create, update or delete posts
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+    match /saved_prompts/{savedId} {
+      // Allow reading, creating, and deleting saved prompts
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if true;
+    }
+  }
+}
